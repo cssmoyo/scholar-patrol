@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Manage Crossing Times</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+  <style>
+    .crossing-table-container {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .crossing-table-container h1 {
+        margin-bottom: 20px;
+    }
+
+    .crossing-table-container .add-crossing-btn {
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .crossing-table-container .add-crossing-btn:hover {
+        background-color: #218838;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .table th, .table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .actions button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .edit-btn {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .edit-btn:hover {
+        background-color: #e0a800;
+    }
+
+    .delete-btn {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .delete-btn:hover {
+        background-color: #c82333;
+    }
+
+    .update-btn {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .update-btn:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<div class="crossing-table-container">
+  <h1>Crossing Time</h1>
+  <button class="add-crossing-btn">Add Crossing Time</button>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Crossing Time ID</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Day</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody th:each="crossing : ${crossings}">
+    <tr>
+      <td th:text="${crossing.crossing_id}">1</td>
+      <td th:text="${crossing.start_time}">08:00</td>
+      <td th:text="${crossing.end_time}">09:00</td>
+      <td th:text="${crossing.day_of_the_week}">Monday</td>
+      <td>
+        <div class="actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+          <button class="update-btn">Update</button>
+        </div>
+      </td>
+    </tr>
+    <!-- Repeat for more crossings -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
