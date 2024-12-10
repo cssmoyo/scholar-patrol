@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Notifications</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <style>
+        .notification-table-container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-table-container h1 {
+            margin-bottom: 20px;
+        }
+
+        .notification-table-container .add-notification-btn {
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .notification-table-container .add-notification-btn:hover {
+            background-color: #218838;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .update-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .update-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="notification-table-container">
+    <h1>Notification</h1>
+    <button class="add-notification-btn">Add Notification</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Notification ID</th>
+            <th>Message</th>
+            <th>TimeStamp</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody th:each="notification : ${notifications}">
+        <tr>
+            <td th:text="${notification.notification_id}">1</td>
+            <td th:text="${notification.message}">Msg1</td>
+            <td th:text="${notification.timestamp}">2024-12-07</td>
+            <td>
+                <div class="actions">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                    <button class="update-btn">Update</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${notification.notification_id}">2</td>
+            <td th:text="${notification.message}">Msg2</td>
+            <td th:text="${notification.timestamp}">2024-12-08</td>
+            <td>
+                <div class="actions">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                    <button class="update-btn">Update</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Repeat for more notifications -->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
