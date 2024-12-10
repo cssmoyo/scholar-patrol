@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Traffic Data</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <style>
+        .trafficdata-table-container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .trafficdata-table-container h1 {
+            margin-bottom: 20px;
+        }
+
+        .trafficdata-table-container .add-trafficdata-btn {
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .trafficdata-table-container .add-trafficdata-btn:hover {
+            background-color: #218838;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .update-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .update-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="trafficdata-table-container">
+    <h1>Traffic Data</h1>
+    <button class="add-trafficdata-btn">Add Traffic Data</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Data ID</th>
+            <th>Crossing ID</th>
+            <th>TimeStamp</th>
+            <th>Pedestrians</th>
+            <th>Vehicles</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody th:each="data : ${trafficData}">
+        <tr>
+            <td th:text="${data.data_id}">1</td>
+            <td th:text="${data.crossing_id}">Msg1</td>
+            <td th:text="${data.timestamp}">2024-12-07</td>
+            <td th:text="${data.pedestrian_count}">11</td>
+            <td th:text="${data.vehicle_count}">7</td>
+            <td>
+                <div class="actions">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                    <button class="update-btn">Update</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${data.data_id}">2</td>
+            <td th:text="${data.crossing_id}">Msg2</td>
+            <td th:text="${data.timestamp}">2024-12-08</td>
+            <td th:text="${data.pedestrian_count}">9</td>
+            <td th:text="${data.vehicle_count}">4</td>
+            <td>
+                <div class="actions">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                    <button class="update-btn">Update</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Repeat for more traffic data -->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
